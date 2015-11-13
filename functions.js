@@ -5,8 +5,14 @@ $(document).ready(function ( ) {
     //$('.showChampions').click(function(){});
     // get JSON data
     
-    var data = $.getJSON('champions.json');
-    var championList = $.each(data, function(champion){
+    var championData = $.getJSON('champions.json', function(champion) {
+        var data = [];
+        $.each(champion, function() {
+            data.push(champion);
+        })
+    });
+    console.log(championData);
+    /*var championList = $.each(data, function(champion){
             
             console.log(champion);
             
@@ -23,7 +29,7 @@ $(document).ready(function ( ) {
                     '</div>'
                 
             };  
-    });
+    });*/
         
     showAll();
     

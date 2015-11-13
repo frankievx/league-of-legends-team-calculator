@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="normalize.css">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="functions.js"></script>
+
+        <form action="database.html" method="post">
+            <h1>League of Legends Database</h1>
+
+            <label for="championName">Champion Name</label>
+            <input type="text" id="championName" name="champion">
+            <label for="championstat">Statistic</label>
+            <input type="text" id="championstat" name="stat">
+            <button type="submit" class="showChampions"> Search </button>
+        
+        </form>
+        <button type="button" class="loadChampions">Load Champions</button>
+        <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.getJSON("champions.json", function(result){
+                    $.each(result, function(i, field){
+                        $("div").append(field + " ");
+                        });
+                    });
+                });
+            });    
+        </script>
+        <div class="champInfo">
+            <h2>Aatrox</h2>
+            <img src="img%20copy/champion/Aatrox.png">
+            <p>"Aatrox is a legendary warrior, one of only five that remain of an ancient race known as the Darkin. He wields his massive blade with grace and poise, slicing through legions in a style that is hypnotic to behold. With each foe felled, Aatrox's ..."</p>
+            <p>HP: 537.8</p>
+            <p>HPperLevel: 85</p>
+        </div> 
+       
+    </body>
+    
+</html>

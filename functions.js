@@ -4,14 +4,58 @@ $(document).ready(function ( ) {
     //$('.buttons a').click(function(e){e.preventDefault()});
     //$('.showChampions').click(function(){});
     // get JSON data
-    
-    var championData = $.getJSON('champions.json', function(champion) {
-        var data = [];
-        $.each(champion, function() {
-            data.push(champion);
-        })
+    /*var mongodb = require('mongodb').MongoClient;
+    MongoClient.connect("mongodb://localhost:27017/LeagueOfLegends", function(err, db) {
+    if(!err) {
+    console.log("We are connected");
+    }
     });
+    */
     console.log(championData);
+    var search = function(championName) {
+        console.log(championData[championName]);
+    };
+    search("Aatrox");
+
+    
+    /*function(champions) {
+        var data = [];
+        console.log(champions.aatrox);
+        
+        $.each(champions, function(key, val) {
+            data.push(key, val);
+        });
+        console.log(data);
+        data.map(function(champion) {
+            var championName = champion.id;
+            var championImage = champion.image.full;
+            $.each(champion.image, function(key, val) {
+                championImage.push(key, val);
+            });
+                
+            
+            var championStats = champion;
+            console.log(champion.blurb);
+            var championBlurb = champion.blurb;
+            return {
+                html:'<div class="champInfo">'+
+                     '<h2>'+championName+'</h2>'+
+                    '<img src="img%20copy/champion/'+championImage+'">'+
+                    '<p>'+championBlurb+'</p>'+
+                    '<p>HP: "'+championStats.hp+'"</p>'+
+                    '<p>HPperLevel: "'+championStats.hpperlevel+'</p>'+
+                    '</div>'
+            };
+            
+            
+        })
+    };
+
+    
+    /*data.$.each(champion, function(key, val) {
+            data.push(key, val);
+        });
+    console.log(data);
     /*var championList = $.each(data, function(champion){
             
             console.log(champion);
@@ -29,7 +73,7 @@ $(document).ready(function ( ) {
                     '</div>'
                 
             };  
-    });*/
+    });
         
     showAll();
     
@@ -45,7 +89,7 @@ $(document).ready(function ( ) {
         dataArray.map(function(champion) {
             return champion.html;
         });
-    };
+    };*/
         
 });
 

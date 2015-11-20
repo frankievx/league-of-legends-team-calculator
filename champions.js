@@ -1,4 +1,4 @@
-var champions = {
+var championData = {
       "Aatrox": {
          "version": "5.21.1",
          "id": "Aatrox",

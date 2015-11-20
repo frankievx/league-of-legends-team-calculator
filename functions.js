@@ -20,6 +20,7 @@ $(document).ready(function ( ) {
         $(".champList").each(function(champion) {
             $(".champList").after("<div class=champStats>");
             $(".champInfo").after(" <h2>" +champion.name+ "</h2>");
+            console.log(champion["name"])
         });
     };
     showAll(championData);

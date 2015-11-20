@@ -16,6 +16,24 @@ $(document).ready(function ( ) {
         console.log(championData[championName]);
     };
     search("Aatrox");
+    var showAll = function(championData) {
+        $(".champList").each(function(champion) {
+            $(".champList").after("<div class=champStats>");
+            $(".champInfo").after(" <h2>" +champion.name+ "</h2>");
+        });
+    };
+    showAll(championData);
+    /*        $("")
+            <div class="champInfo">
+                <h2>Aatrox</h2>
+                <img src="img%20copy/champion/Aatrox.png">
+                <p>"Aatrox is a legendary warrior, one of only five that remain of an ancient race known as the Darkin. He wields his massive blade with grace and poise, slicing through legions in a style that is hypnotic to behold. With each foe felled, Aatrox's ..."</p>
+                <p>HP: 537.8</p>
+                <p>HPperLevel: 85</p>
+            </div>
+        }
+        
+    }
 
     
     /*function(champions) {

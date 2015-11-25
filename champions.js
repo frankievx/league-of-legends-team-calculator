@@ -175,7 +175,7 @@ var championData = {
             "Support"
          ],
          "partype": "Mana",
-         "stats": {
+         "stats": [{
             "hp": 613.36,
             "hpperlevel": 106,
             "mp": 278.84,
@@ -196,7 +196,7 @@ var championData = {
             "attackdamageperlevel": 3.62,
             "attackspeedoffset": 0,
             "attackspeedperlevel": 2.125
-         }
+         }]
       },
       "Amumu": {
          "version": "5.21.1",

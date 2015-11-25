@@ -1,4 +1,5 @@
 
+var data = [];
 $(document).ready(function ( ) {
     //bind event handlers
     //$('.buttons a').click(function(e){e.preventDefault()});
@@ -11,104 +12,57 @@ $(document).ready(function ( ) {
     }
     });
     */
+    $.getJSON("champions.json", function (response) { 
+        data = response;
+        var champions = Object.keys(data);
+        for(var i=0; i<champions.length; i++) {
+            console.log(data[champions[i]]);
+            console.log(data[champions[i]]["name"]);
+            var champInfo = '<div class="champStats">'+
+                                '<h2>'+data[champions[i]]["name"]+'</h2>'+
+                                '<img src="img%20copy/champion/'+data[champions[i]]["image"]["full"]+'">'+
+                                '<p>'+data[champions[i]]["stats"]["hp"]+'</p>'
+                                '<p>'+data[champions[i]]["stats"]["hpperlevel"]+'</p>'+
+                            '</div>';
+            $(".champList").append(champInfo);
+        }
+    });
+    
+    /*Object.prototype.each = function(collection, callback){
+    if(Array.isArray(collection)){
+        for(var i=0; i<collection.length; i++){
+           callback(collection[i]);
+           }
+        }
+     else {
+         for(var x in collection){
+             callback(collection[x]);
+             }
+     }
+}*/
+
+    Array.prototype.concatAll = function() {
+        var results = [];
+        this.forEach(function(subArray) {
+            results.push.apply(results, subArray);
+            return results;
+        });
+    };
     console.log(championData);
     var search = function(championName) {
         console.log(championData[championName]);
     };
-    search("Aatrox");
-    var showAll = function(championData) {
-        $(".champList").each(function(champion) {
-            $(".champList").after("<div class=champStats>");
-            $(".champInfo").after(" <h2>" +champion.name+ "</h2>");
-            console.log(champion["name"])
-        });
-    };
-    showAll(championData);
-    /*        $("")
-            <div class="champInfo">
-                <h2>Aatrox</h2>
-                <img src="img%20copy/champion/Aatrox.png">
-                <p>"Aatrox is a legendary warrior, one of only five that remain of an ancient race known as the Darkin. He wields his massive blade with grace and poise, slicing through legions in a style that is hypnotic to behold. With each foe felled, Aatrox's ..."</p>
-                <p>HP: 537.8</p>
-                <p>HPperLevel: 85</p>
-            </div>
-        }
-        
-    }
-
-    
-    /*function(champions) {
-        var data = [];
-        console.log(champions.aatrox);
-        
-        $.each(champions, function(key, val) {
-            data.push(key, val);
-        });
-        console.log(data);
-        data.map(function(champion) {
-            var championName = champion.id;
-            var championImage = champion.image.full;
-            $.each(champion.image, function(key, val) {
-                championImage.push(key, val);
-            });
-                
-            
-            var championStats = champion;
-            console.log(champion.blurb);
-            var championBlurb = champion.blurb;
-            return {
-                html:'<div class="champInfo">'+
-                     '<h2>'+championName+'</h2>'+
-                    '<img src="img%20copy/champion/'+championImage+'">'+
-                    '<p>'+championBlurb+'</p>'+
-                    '<p>HP: "'+championStats.hp+'"</p>'+
-                    '<p>HPperLevel: "'+championStats.hpperlevel+'</p>'+
-                    '</div>'
-            };
-            
-            
-        })
-    };
-
-    
-    /*data.$.each(champion, function(key, val) {
-            data.push(key, val);
-        });
-    console.log(data);
-    /*var championList = $.each(data, function(champion){
-            
-            console.log(champion);
-            
-            var championImage = champion.image.full;
-            var championStats = champion.stats;
-            var championBlurb = champion.blurb;
-            return {
-                html:'<div class="champInfo">'+
-                     '<h2>'+champion+'</h2>'+
-                    '<img src="img%20copy/champion/'+championImage+'">'+
-                    '<p>'+championBlurb+'</p>'+
-                    '<p>HP: "'+championStats.hp+'"</p>'+
-                    '<p>HPperLevel: "'+championStats.hpperlevel+'</p>'+
-                    '</div>'
-                
-            };  
-    });
-        
-    showAll();
-    
-    
-    
-        
-                         
-    function showAll() {
-        return createHTML(championList);
-    };
-    
-    function createHTML(dataArray) {
-        dataArray.map(function(champion) {
-            return champion.html;
+    //each(championData, console.log());
+    /*var showAll = function(championData) {
+        forEach(championData, function() {
+            var champInfo = '<div class="champStats">'+
+                                '<h2>'this.name'</h2>'+
+                                '<img src="'this.image.full'">'+
+                                '<p>'this.stats.hp'</p>'
+                                '<p>'this.stats.hpperlevel'</p>'+
+                            '</div>';
+            return $(".champList").append(champInfo);
         });
     };*/
-        
 });
 
